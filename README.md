@@ -1,7 +1,3 @@
-"# APIALUNOS" 
-"# APIALUNOS" 
-"# APIALUNOS" 
-"# APIALUNOS" 
-"# APIALUNOS" 
-"# APIALUNOS" 
-"# APIALUNOS" 
+#atividade Back End de api alunos
+#GET
+#POST

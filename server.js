@@ -62,4 +62,23 @@ app.listen(PORT, ()=> {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 }) // => = function
 
+app.post("/alunos", (req, res)=>{
+    const(nome, cor, idade) = req.body;
 
+    if(!nome || !cor || !idade){
+        return res.status(400).json((msg : "Nome cor e idade são obrigatórios"))
+    }
+    const novoAluno = {
+        nome, cor, idade
+    }
+
+    const id = ALUNOS.lenght > 0 ? ALUNOS[ALUNOS.lenght - 1].id + 1 : 1
+
+    console.log(novoAluno)
+    ALUNOS.push(novoAluno)
+    res.status(201).json({mensagem: "Aluno criado com sucesso"})
+})
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`)
+})
