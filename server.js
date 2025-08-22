@@ -63,10 +63,10 @@ app.listen(PORT, ()=> {
 }) // => = function
 
 app.post("/alunos", (req, res)=>{
-    const(nome, cor, idade) = req.body;
+    const {nome, cor, idade} = req.body;
 
     if(!nome || !cor || !idade){
-        return res.status(400).json((msg : "Nome cor e idade são obrigatórios"))
+        return res.status(400).json({msg : "Nome cor e idade são obrigatórios"})
     }
     const novoAluno = {
         nome, cor, idade
@@ -77,6 +77,20 @@ app.post("/alunos", (req, res)=>{
     console.log(novoAluno)
     ALUNOS.push(novoAluno)
     res.status(201).json({mensagem: "Aluno criado com sucesso"})
+})
+
+app.delete("/alunos/:id", (req, res)=>{
+    const id = Number(req.params.id);
+    const indice = ALUNOS.findIndex(aluno => aluno.id === id)
+
+    if (indice === -1){
+        return res.status(404).json({
+            msg: "Aluno não encontrado ou já foi deletado"
+        })
+    }
+    console.log(indice);
+    ALUNOS.splice(indice, 1);
+    res.status(204).json({msg: "Deletado com sucesso"});
 })
 
 app.listen(PORT, () => {
