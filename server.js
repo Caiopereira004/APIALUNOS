@@ -52,7 +52,7 @@ app.get("/alunos/:cor", (req, res) =>{
     if (alunosFiltrados.lenght > 0){
         res.status(200).json(alunosFiltrados);
     }else[
-        res.status(404).json({ msg: "Nenhum aluno encontrado com essa cor"});
+        res.status(404).json({ msg: "Nenhum aluno encontrado com essa cor"})
     ]
 });
 
